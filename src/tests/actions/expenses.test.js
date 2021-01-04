@@ -85,12 +85,10 @@ test('should edit expenses from firebase', (done) => {
         });
         return database.ref(`expenses/${id}`).once('value');
     }).then((snapshot) => {
-        // expect(snapshot.val()).toBe({
-        //     description: 'Gum',
-        //     note: 'Updated note',
-        //     amount: 843.10,
-        //     createdAt: 0
-        // });
+        expect(snapshot.val().description).toBe('Gum');
+        expect(snapshot.val().note).toBe('Updated note');
+        expect(snapshot.val().amount).toBe(843.10);
+        expect(snapshot.val().createdAt).toBe(0);
         done();
     });
 });
